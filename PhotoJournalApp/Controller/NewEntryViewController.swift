@@ -19,22 +19,41 @@ class NewEntryViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+
     
-    @IBAction func cameraButtonPressed(_ sender: UIButton) {
-    }
     
     @IBAction func photoButtonPressed(_ sender: UIButton) {
+        
+         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+                   let cameraAction = UIAlertAction(title: "Camera", style: .default) { [weak self] alertAction in
+                     self?.showImageController(isCameraSelected: true)
+                   }
+        
+                   let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { [weak self] alertAction in
+                     self?.showImageController(isCameraSelected: false)
+                   }
+                   let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+                   // check if camera is available, if camera is not available and you attempt to show
+                   // the camera the app will crash
+                   if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                     alertController.addAction(cameraAction)
+                   }
+        
+                   alertController.addAction(photoLibraryAction)
+                   alertController.addAction(cancelAction)
+                   present(alertController, animated: true)
+        
+            }
+        
+            private func showImageController(isCameraSelected: Bool) {
+               // source type default will be .photoLibrary
+               imagePickerController.sourceType = .photoLibrary
+        
+               if isCameraSelected {
+                 imagePickerController.sourceType = .camera
+               }
+               present(imagePickerController, animated: true)
+             }
     }
-    /*
-    //DEtail controller
-     make the protocol delegate/ create protocol and function in here
-     
-     //Enum for photo state, make it chanfge if it has a photo loadedd or not
-     
-     it has two cases that detects newphoto/existing photo
-     
-   change state of view controller depending on whether or not a photo has been passed to it
-     this handles whether they add or
-    */
-//make an instance of
-}
+    
