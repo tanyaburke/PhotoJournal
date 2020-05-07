@@ -229,8 +229,8 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Describe your photo" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sZJ-gE-04b">
                                 <rect key="frame" x="20" y="20" width="374" height="193"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="placeholderTextColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="M0u-uk-D4U">
@@ -255,7 +255,8 @@
                                 <rect key="frame" x="163" y="522" width="88" height="30"/>
                                 <state key="normal" title="Save Journal"/>
                                 <connections>
-                                    <action selector="saveButton:" destination="wUH-xE-OWn" eventType="touchUpInside" id="uTW-4I-Tzc"/>
+                                    <action selector="saveButtonPressed:" destination="wUH-xE-OWn" eventType="touchUpInside" id="TTL-A1-E6t"/>
+                                    <segue destination="qU0-kn-dUU" kind="unwind" unwindAction="unwindFromNewWithSegue:" id="6So-R3-Jfs"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -287,6 +288,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wo3-wU-AHh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="qU0-kn-dUU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2222" y="634"/>
         </scene>

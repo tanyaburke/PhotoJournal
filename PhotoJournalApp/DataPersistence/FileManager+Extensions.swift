@@ -8,6 +8,12 @@
 
 import Foundation
 
+
+public enum Directory {
+  case documentsDirectory
+  case cachesDirectory
+}
+
 extension FileManager {
 
   static func getDocumentsDirectory() -> URL  {
@@ -18,4 +24,16 @@ extension FileManager {
   static func pathToDocumentsDirectory(with filename: String) -> URL {
     return getDocumentsDirectory().appendingPathComponent(filename)
   }
+    public static func getCachesDirectory() -> URL {
+      return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+    }
+    
+    public static func getPath(with filename: String, for directory: Directory) -> URL {
+      switch directory {
+      case .cachesDirectory:
+        return getCachesDirectory().appendingPathComponent(filename)
+      case .documentsDirectory:
+        return getDocumentsDirectory().appendingPathComponent(filename)
+      }
+    }
 }

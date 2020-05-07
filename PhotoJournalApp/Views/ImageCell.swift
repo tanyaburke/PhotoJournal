@@ -11,7 +11,9 @@ import UIKit
 protocol ImageCellDelegate: AnyObject {
   func didLongPress(_ imageCell: ImageCell)
 }
+
 class ImageCell: UICollectionViewCell {
+    
     @IBOutlet weak var photoViem: UIImageView!
     
     @IBOutlet weak var descriptionText: UILabel!
