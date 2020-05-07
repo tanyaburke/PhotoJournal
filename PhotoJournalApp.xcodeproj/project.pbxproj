@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E22CA9E2463A9E70089B3B2 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E22CA9D2463A9E70089B3B2 /* UIView+Extension.swift */; };
 		2E4765FD23FDBC490019DBE5 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4765FC23FDBC480019DBE5 /* ImageCell.swift */; };
 		2E7907CE245C192F00BC2209 /* ImageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7907CD245C192F00BC2209 /* ImageObject.swift */; };
 		2E7907D0245C288A00BC2209 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7907CF245C288A00BC2209 /* FileManager+Extensions.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E22CA9D2463A9E70089B3B2 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		2E4765FC23FDBC480019DBE5 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		2E7907CD245C192F00BC2209 /* ImageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageObject.swift; sourceTree = "<group>"; };
 		2E7907CF245C288A00BC2209 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				2E92538523FCC151000653C5 /* ViewController.swift */,
 				2E9253A623FCC896000653C5 /* SettingsViewController.swift */,
 				2E9253A323FCC7A7000653C5 /* NewEntryViewController.swift */,
+				2E22CA9D2463A9E70089B3B2 /* UIView+Extension.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				2E7907D0245C288A00BC2209 /* FileManager+Extensions.swift in Sources */,
 				2E9253A723FCC896000653C5 /* SettingsViewController.swift in Sources */,
 				2E7907D2245C28E800BC2209 /* PersistenceHelper.swift in Sources */,
+				2E22CA9E2463A9E70089B3B2 /* UIView+Extension.swift in Sources */,
 				2E92538423FCC151000653C5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

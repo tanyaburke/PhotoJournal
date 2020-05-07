@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PhotoJournalApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="PhotoJournalApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,6 +144,9 @@
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="uVd-fF-UCS">
                                         <rect key="frame" x="-2" y="0.0" width="221" height="63"/>
+                                        <connections>
+                                            <action selector="redValue:" destination="UUb-fI-KRA" eventType="valueChanged" id="Z2O-Vq-jbv"/>
+                                        </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Green" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2z-u3-DZi">
                                         <rect key="frame" x="0.0" y="74" width="217" height="20.5"/>
@@ -153,6 +156,9 @@
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ff3-1D-fVF">
                                         <rect key="frame" x="-2" y="106.5" width="221" height="31"/>
+                                        <connections>
+                                            <action selector="greenValue:" destination="UUb-fI-KRA" eventType="valueChanged" id="t4v-Ur-Dpa"/>
+                                        </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4R-pm-ILG">
                                         <rect key="frame" x="0.0" y="148.5" width="217" height="20.5"/>
@@ -162,6 +168,9 @@
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ncp-l7-8G4">
                                         <rect key="frame" x="-2" y="181" width="221" height="31"/>
+                                        <connections>
+                                            <action selector="blueValue:" destination="UUb-fI-KRA" eventType="valueChanged" id="C2Q-C5-d44"/>
+                                        </connections>
                                     </slider>
                                 </subviews>
                             </stackView>
@@ -177,6 +186,9 @@
                                     <segment title="" image="chevron.up" catalog="system"/>
                                     <segment title="" image="chevron.left" catalog="system"/>
                                 </segments>
+                                <connections>
+                                    <action selector="scrollDirection:" destination="UUb-fI-KRA" eventType="valueChanged" id="kQF-yV-oF9"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -204,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETg-me-aQf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2710.144927536232" y="-17.410714285714285"/>
+            <point key="canvasLocation" x="2223" y="-49"/>
         </scene>
         <!--New Entry View Controller-->
         <scene sceneID="meA-g1-9Cr">
@@ -217,8 +229,8 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Describe your photo" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sZJ-gE-04b">
                                 <rect key="frame" x="20" y="20" width="374" height="193"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" systemColor="placeholderTextColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="M0u-uk-D4U">
@@ -239,10 +251,18 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="xXU-74-VnX"/>
                                 </items>
                             </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RW0-wb-NJj">
+                                <rect key="frame" x="163" y="522" width="88" height="30"/>
+                                <state key="normal" title="Save Journal"/>
+                                <connections>
+                                    <action selector="saveButton:" destination="wUH-xE-OWn" eventType="touchUpInside" id="uTW-4I-Tzc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="vhq-Yg-RoZ" firstAttribute="bottom" secondItem="M0u-uk-D4U" secondAttribute="bottom" constant="257" id="0y2-Qy-fmw"/>
+                            <constraint firstItem="RW0-wb-NJj" firstAttribute="top" secondItem="M0u-uk-D4U" secondAttribute="bottom" constant="20" id="4XL-gy-x3q"/>
                             <constraint firstItem="vhq-Yg-RoZ" firstAttribute="trailing" secondItem="sZJ-gE-04b" secondAttribute="trailing" constant="20" id="4ot-k0-s2Y"/>
                             <constraint firstItem="5Lk-XP-lxO" firstAttribute="trailing" secondItem="vhq-Yg-RoZ" secondAttribute="trailing" id="6os-83-cog"/>
                             <constraint firstItem="vhq-Yg-RoZ" firstAttribute="trailing" secondItem="M0u-uk-D4U" secondAttribute="trailing" constant="20" id="KGW-Bn-UES"/>
@@ -250,7 +270,9 @@
                             <constraint firstItem="M0u-uk-D4U" firstAttribute="leading" secondItem="vhq-Yg-RoZ" secondAttribute="leading" constant="20" id="NzL-sT-tYF"/>
                             <constraint firstItem="sZJ-gE-04b" firstAttribute="top" secondItem="vhq-Yg-RoZ" secondAttribute="top" constant="20" id="Q7f-2N-izt"/>
                             <constraint firstItem="M0u-uk-D4U" firstAttribute="top" secondItem="sZJ-gE-04b" secondAttribute="bottom" constant="20" id="Vg4-nV-7oh"/>
+                            <constraint firstItem="RW0-wb-NJj" firstAttribute="leading" secondItem="vhq-Yg-RoZ" secondAttribute="leading" constant="163" id="Zrn-QC-LBB"/>
                             <constraint firstItem="sZJ-gE-04b" firstAttribute="leading" secondItem="vhq-Yg-RoZ" secondAttribute="leading" constant="20" id="jRG-UU-9Tc"/>
+                            <constraint firstItem="vhq-Yg-RoZ" firstAttribute="trailing" secondItem="RW0-wb-NJj" secondAttribute="trailing" constant="163" id="pta-a8-2oU"/>
                             <constraint firstItem="5Lk-XP-lxO" firstAttribute="bottom" secondItem="vhq-Yg-RoZ" secondAttribute="bottom" id="u7e-tl-BVC"/>
                             <constraint firstItem="M0u-uk-D4U" firstAttribute="top" secondItem="sZJ-gE-04b" secondAttribute="bottom" constant="20" id="xhz-Lf-ymX"/>
                         </constraints>
@@ -260,12 +282,13 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="descriptionEntry" destination="sZJ-gE-04b" id="WLH-4Z-iPk"/>
+                        <outlet property="photobutton" destination="GZj-2e-0aZ" id="H3k-VK-YsT"/>
                         <outlet property="selectedImage" destination="M0u-uk-D4U" id="sZl-8c-QJz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wo3-wU-AHh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2710.144927536232" y="641.51785714285711"/>
+            <point key="canvasLocation" x="2222" y="634"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="biE-Ux-CPv">

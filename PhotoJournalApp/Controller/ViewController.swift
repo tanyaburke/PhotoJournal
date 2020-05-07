@@ -18,6 +18,7 @@ class ViewController: UIViewController {
             imageCollectionView.reloadData()
         }
     }
+    
     private var imageObjects = [ImageObject]()
     private let imagePickerController = UIImagePickerController()
     
@@ -26,7 +27,7 @@ class ViewController: UIViewController {
     private var selectedImage: UIImage? {
       didSet {
        
-        appendNewPhotoToCollection()
+        //appendNewPhotoToCollection()
       }
     }
     
@@ -34,7 +35,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         imageCollectionView.dataSource = self
         imageCollectionView.delegate = self
-        imagePickerController.delegate = self
+//        imagePickerController.delegate = self
            
            loadImageObjects()
     }
@@ -47,47 +48,78 @@ class ViewController: UIViewController {
       }
     }
     
-    private func appendNewPhotoToCollection() {
-      guard let image = selectedImage else {
-        print("image is nil")
-        return
-      }
-      
-      print("original image size is \(image.size)")
-      
-      // the size for resizing of the image
-      let size = UIScreen.main.bounds.size
-          
-      // we will maintain the aspect ratio of the image
-      let rect = AVMakeRect(aspectRatio: image.size, insideRect: CGRect(origin: CGPoint.zero, size: size))
-      
-      // resize image
-      let resizeImage = image.resizeImage(to: rect.size.width, height: rect.size.height)
-      
-      print("resized image size is \(resizeImage.size)")
-      
-      // jpegData(compressionQuality: 1.0) converts UIImage to Data
-      guard let resizedImageData = resizeImage.jpegData(compressionQuality: 1.0) else {
-        return
-      }    // create an ImageObject using the image selected
-        let imageObject = ImageObject(imageData: resizedImageData, date: Date(), description: resizedImageData.description )
-      
-      // insert new imageObject into imageObjects
-      imageObjects.insert(imageObject, at: 0) // 51
-          
-      // create an indexPath for insertion into collection view
-      let indexPath = IndexPath(row: 0, section: 0)
-      
-      // insert new cell into collection view
-      imageCollectionView.insertItems(at: [indexPath])
-      
-      // persist imageObject to documents directory
-      do {
-        try dataPersistence.create(item: imageObject) // end of array in persistence store
-      } catch {
-        print("saving error: \(error)")
-      }
-    }
+    
+    @IBAction func unwindFromNew(segue: UIStoryboardSegue){
+        //we need access to the source destination view controller
+        
+//        guard  let newEntryViewController = segue.source as? NewEntryViewController else{
+//            return
+        }
+        
+//        selectedImage = newEntryViewController.
+        //after event is set here, didSet{...} on the event property gets called
+//    }
+    
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//      guard let navController = segue.destination as? UINavigationController,
+//        let settingsController = navController as? SettingsViewController else {
+//          return
+//      }
+//      settingsController.delegate = self
+//      settingsController.opacity = opacity
+//
+//      var red: CGFloat = 0
+//      var green: CGFloat = 0
+//      var blue: CGFloat = 0
+//      color.getRed(&red, green: &green, blue: &blue, alpha: nil)
+//      settingsController.red = red
+//      settingsController.green = green
+//      settingsController.blue = blue
+//    }
+}
+    
+//    private func appendNewPhotoToCollection() {
+//      guard let image = selectedImage else {
+//        print("image is nil")
+//        return
+//      }
+//      
+//      print("original image size is \(image.size)")
+//      
+//      // the size for resizing of the image
+//      let size = UIScreen.main.bounds.size
+//          
+//      // we will maintain the aspect ratio of the image
+//      let rect = AVMakeRect(aspectRatio: image.size, insideRect: CGRect(origin: CGPoint.zero, size: size))
+//      
+//      // resize image
+//      let resizeImage = image.resizeImage(to: rect.size.width, height: rect.size.height)
+//      
+//      print("resized image size is \(resizeImage.size)")
+//      
+//      // jpegData(compressionQuality: 1.0) converts UIImage to Data
+//      guard let resizedImageData = resizeImage.jpegData(compressionQuality: 1.0) else {
+//        return
+//      }    // create an ImageObject using the image selected
+//        let imageObject = ImageObject(imageData: resizedImageData, date: Date(), description: resizedImageData.description )
+//      
+//      // insert new imageObject into imageObjects
+//      imageObjects.insert(imageObject, at: 0) // 51
+//          
+//      // create an indexPath for insertion into collection view
+//      let indexPath = IndexPath(row: 0, section: 0)
+//      
+//      // insert new cell into collection view
+//      imageCollectionView.insertItems(at: [indexPath])
+//      
+//      // persist imageObject to documents directory
+//      do {
+//        try dataPersistence.create(item: imageObject) // end of array in persistence store
+//      } catch {
+//        print("saving error: \(error)")
+//      }
+//    }
     
 //    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
 //        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -122,7 +154,7 @@ class ViewController: UIViewController {
 //       present(imagePickerController, animated: true)
 //     }
 //
-}
+
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     
@@ -156,24 +188,24 @@ extension ViewController: UICollectionViewDataSource {
 
 
 
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-  dismiss(animated: true)
-}
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-      
-      // we need to access the UIImagePickerController.InfoKey.orginalImage key to get the
-      // UIImage that was selected
-      guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
-        print("image selected not found")
-        return
-      }
-      
-      selectedImage = image
-      
-      dismiss(animated: true)
-    }
-}
+//extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+//func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//  dismiss(animated: true)
+//}
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//      
+//      // we need to access the UIImagePickerController.InfoKey.orginalImage key to get the
+//      // UIImage that was selected
+//      guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+//        print("image selected not found")
+//        return
+//      }
+//      
+//      selectedImage = image
+//      
+//      dismiss(animated: true)
+//    }
+//}
 
 extension ViewController: ImageCellDelegate {
   func didLongPress(_ imageCell: ImageCell) {

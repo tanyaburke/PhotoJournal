@@ -53,8 +53,8 @@ class ImageCell: UICollectionViewCell {
         guard let image = UIImage(data: imageObject.imageData) else {
          return
        }
-       photoViem.image = image
-//        descriptionText.text = imageObject.description
+        photoViem.image = image
+        descriptionText.text = imageObject.description
         
         
      }
