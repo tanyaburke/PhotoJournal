@@ -13,32 +13,24 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
-//    var images = [UIImage]() {
-//        didSet {
-//            imageCollectionView.reloadData()
-//        }
-//    }
+
+    private var imageObjects = [ImageObject](){
+        didSet {
+            imageCollectionView.reloadData()
+        }
+    }
     
-    private var imageObjects = [ImageObject]()
     var imageObject: ImageObject!
     private let imagePickerController = UIImagePickerController()
     
     private let dataPersistence = PersistenceHelper(filename: "images.plist")
     
-    private var selectedImage: UIImage? {
-      didSet {
-       
-
-      }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imageCollectionView.dataSource = self
         imageCollectionView.delegate = self
         
-        
-           
            loadImageObjects()
     }
     
@@ -53,13 +45,13 @@ class ViewController: UIViewController {
     
     
     @IBAction func unwindFromNew(segue: UIStoryboardSegue){
-//        we need access to the source destination view controller
+
         
-        guard  let newEntryViewController = segue.source as? NewEntryViewController else{
-            return
-        }
+//        guard  let newEntryViewController = segue.source as? NewEntryViewController else{
+//            return
+//        }
         loadImageObjects()
-        imageObject = newEntryViewController.imageObject
+//        imageObject = newEntryViewController.imageObject
 //        afterevent is set here, didSet{...} on the event property gets called
     }
     
@@ -69,8 +61,6 @@ class ViewController: UIViewController {
     
 
     
-
-
 extension ViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -102,8 +92,6 @@ extension ViewController: UICollectionViewDataSource {
 }
 
 
-
-
 extension ViewController: ImageCellDelegate {
   func didLongPress(_ imageCell: ImageCell) {
     
@@ -111,19 +99,30 @@ extension ViewController: ImageCellDelegate {
       return
     }
     
-    // present an action sheet
-    
-    // actions: delete, cancel
+
     let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-    let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] alertAction in
+    let editAction = UIAlertAction(title: "Edit", style: .default) { [weak self] alertAction in
+       
+        
+//        self?.editObject(imageObject: )
+    }
+    let deleteAction = UIAlertAction(title: "Delete", style:  .destructive) { [weak self] alertAction in
       self?.deleteImageObject(indexPath: indexPath)
     }
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+    alertController.addAction(editAction)
     alertController.addAction(deleteAction)
     alertController.addAction(cancelAction)
     present(alertController, animated: true)
   }
-  
+    
+    private func editObject(imageObject: ImageObject){
+         
+        
+       
+        
+    }
+
   private func deleteImageObject(indexPath: IndexPath) {
     dataPersistence.sync(items: imageObjects)
     do {

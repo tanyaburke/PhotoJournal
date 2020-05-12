@@ -53,7 +53,7 @@ class NewEntryViewController: UIViewController {
             return
             
         }    // create an ImageObject using the image selected
-        let imageObject = ImageObject(imageData: resizedImageData, date: Date(), description: resizedImageData.description )
+        let imageObject = ImageObject(imageData: resizedImageData, date: Date(), description: descriptionEntry.text )
         
         do {
             try dataPersistence.create(item: imageObject) // end of array in persistence store
@@ -65,7 +65,7 @@ class NewEntryViewController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         
-        
+        appendNewPhotoToCollection()
         
         
     }
